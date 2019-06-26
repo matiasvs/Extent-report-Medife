@@ -139,16 +139,16 @@ public class StepDefs {
 
 	@After()
 	public void embedScreenshot(Scenario scenario) throws IOException {
-//		if (scenario.isFailed()) {
-//			try {
-//				final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-//				scenario.embed(screenshot, "image/png");
-//			} catch (WebDriverException wde) {
-//				System.err.println(wde.getMessage());
-//			} catch (ClassCastException cce) {
-//				cce.printStackTrace();
-//			}
-//		}
+		if (scenario.isFailed()) {
+			try {
+				final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+				scenario.embed(screenshot, "image/png");
+			} catch (WebDriverException wde) {
+				System.err.println(wde.getMessage());
+			} catch (ClassCastException cce) {
+				cce.printStackTrace();
+			}
+		}
 		driver.quit();
 	}
 

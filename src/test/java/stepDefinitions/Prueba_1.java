@@ -57,11 +57,11 @@ public class Prueba_1 {
 		 */
 		 
 		
-//		System.setProperty(pathChrome, browser ); 
-//		driver = new ChromeDriver(); //driver = new FirefoxDriver();
-//		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-//		driver.get(baseURL); 
-//		driver.manage().window().maximize();		 
+		System.setProperty(pathChrome, browser ); 
+		driver = new ChromeDriver(); //driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get(baseURL); 
+		driver.manage().window().maximize();		 
 		 
 	}
 	
@@ -75,15 +75,15 @@ public class Prueba_1 {
 //		driver.get(baseURL); 
 //		driver.manage().window().maximize();
 		
-		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless");
-		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-		//System.setProperty("webdriver.chrome.driver","//CucumberwithextentReport//drivers//chromedriver.exe");
-		System.setProperty(pathChrome, browser );
-		driver = new ChromeDriver(options); 
-		driver.get("http://sume-test.apps.openshift.ase.local/#/alta-responsable-pago/datos-personales");
-		driver.manage().window().maximize();
+//		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+//		ChromeOptions options = new ChromeOptions();
+//		options.addArguments("--headless");
+//		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+//		//System.setProperty("webdriver.chrome.driver","//CucumberwithextentReport//drivers//chromedriver.exe");
+//		System.setProperty(pathChrome, browser );
+//		driver = new ChromeDriver(options); 
+//		driver.get("http://sume-test.apps.openshift.ase.local/#/alta-responsable-pago/datos-personales");
+//		driver.manage().window().maximize();
 	}
 
 	@Given("^Usuario: <maru>$")
@@ -126,16 +126,16 @@ public class Prueba_1 {
 	
 	@After()
 	public void embedScreenshot(Scenario scenario) throws IOException {
-//		if (scenario.isFailed()) {
-//			try {
-//				final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-//				scenario.embed(screenshot, "image/png");
-//			} catch (WebDriverException wde) {
-//				System.err.println(wde.getMessage());
-//			} catch (ClassCastException cce) {
-//				cce.printStackTrace();
-//			}
-//		}
+		if (scenario.isFailed()) {
+			try {
+				final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+				scenario.embed(screenshot, "image/png");
+			} catch (WebDriverException wde) {
+				System.err.println(wde.getMessage());
+			} catch (ClassCastException cce) {
+				cce.printStackTrace();
+			}
+		}
 		driver.quit();
 	}
 }
