@@ -31,6 +31,7 @@ public class Prueba_1 {
 	String browser = PropertyManager.getInstance().getBrowser();
 	String baseURL = PropertyManager.getInstance().getURL();
 	
+	
 	@Before()
 	public void browserInitialize() throws IOException {
 
@@ -66,13 +67,22 @@ public class Prueba_1 {
 	
 	@Given("^Dado un usuario perfil xx conectado con lo siguientes datos$")
 	public void dado_un_usuario_perfil_xx_conectado_con_lo_siguientes_datos() throws Throwable {
-		//driver.get("http://sume-test.apps.openshift.ase.local/#/alta-responsable-pago/datos-personales");
 		System.out.println("Inicio cucumber");
 		
-		System.setProperty(pathChrome, browser ); 
-		driver = new ChromeDriver(); //driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.get(baseURL); 
+//		System.setProperty(pathChrome, browser ); 
+//		driver = new ChromeDriver();
+//		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//		driver.get(baseURL); 
+//		driver.manage().window().maximize();
+		
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless");
+		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+		//System.setProperty("webdriver.chrome.driver","//CucumberwithextentReport//drivers//chromedriver.exe");
+		System.setProperty(pathChrome, browser );
+		driver = new ChromeDriver(options); 
+		driver.get("http://sume-test.apps.openshift.ase.local/#/alta-responsable-pago/datos-personales");
 		driver.manage().window().maximize();
 	}
 
@@ -116,16 +126,16 @@ public class Prueba_1 {
 	
 	@After()
 	public void embedScreenshot(Scenario scenario) throws IOException {
-		if (scenario.isFailed()) {
-			try {
-				final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-				scenario.embed(screenshot, "image/png");
-			} catch (WebDriverException wde) {
-				System.err.println(wde.getMessage());
-			} catch (ClassCastException cce) {
-				cce.printStackTrace();
-			}
-		}
+//		if (scenario.isFailed()) {
+//			try {
+//				final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+//				scenario.embed(screenshot, "image/png");
+//			} catch (WebDriverException wde) {
+//				System.err.println(wde.getMessage());
+//			} catch (ClassCastException cce) {
+//				cce.printStackTrace();
+//			}
+//		}
 		driver.quit();
 	}
 }
