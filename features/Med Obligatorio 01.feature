@@ -13,3 +13,4 @@ Feature: Med 126 - Obligatorios 01 - Validar la lista desplegable del combo Tipo
       | Empresa         |
       | Externo         |
       | Grupo           |
+      | 12              |

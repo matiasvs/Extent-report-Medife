@@ -27,10 +27,10 @@ public class RunCukesTest{
 public static void setup() {
 Reporter.loadXMLConfig(new File("src/test/resources/extent-config.xml"));
 //Reporter.setSystemInfo("Test User", System.getProperty("user.name"));
-Reporter.setSystemInfo("User Name", "AJ");
-Reporter.setSystemInfo("Application Name", "Test App ");
+Reporter.setSystemInfo("User Name", "Matias Veron");
+Reporter.setSystemInfo("Medife", "ERS - 1");
 Reporter.setSystemInfo("Operating System Type", System.getProperty("os.name").toString());
-Reporter.setSystemInfo("Environment", "Production");
+Reporter.setSystemInfo("Environment", "TEST");
 Reporter.setTestRunnerOutput("Test Execution Cucumber Report");
 }
 	
